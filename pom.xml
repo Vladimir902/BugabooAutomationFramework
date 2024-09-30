@@ -31,14 +31,6 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.10.2</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- SLF4J API -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -46,6 +38,20 @@
             <version>2.0.7</version>
         </dependency>
 
+        <!-- SLF4J Simple Binding (optional for basic logging) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.7</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.10.2</version>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.jetbrains</groupId>

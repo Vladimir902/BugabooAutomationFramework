@@ -1,5 +1,6 @@
 package com.bugaboo.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,9 @@ public class HomePage {
 
     @FindBy(id = "navigation-search")
     private WebElement enterValue;
+
+    @FindBy(xpath = "//img[@alt='Bugaboo Fox 5 stroller']")
+    private WebElement locateImage;
 
     //Constructor
     public HomePage(WebDriver driver) {
@@ -39,6 +43,7 @@ public class HomePage {
         enterValue.sendKeys(value);  // Enter the text
         enterValue.sendKeys(Keys.ENTER);  // Press Enter to submit the search
     }
+
 
 }
 

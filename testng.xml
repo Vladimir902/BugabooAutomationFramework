@@ -5,16 +5,20 @@
     <!-- Chrome Browser Tests -->
     <test name="Chrome Tests">
         <parameter name="browser" value="chrome" />
+        <parameter name="headless" value="true" /> <!-- Set to true for headless mode -->
         <classes>
             <class name="com.bugaboo.HomeSteps" />
+            <class name="com.bugaboo.ButterflyPageTest"></class>
         </classes>
     </test>
 
     <!-- Edge Browser Tests -->
     <test name="Edge Tests">
         <parameter name="browser" value="edge" />
+        <parameter name="headless" value="true" /> <!-- Set to true for headless mode -->
         <classes>
             <class name="com.bugaboo.HomeSteps" />
+            <class name="com.bugaboo.ButterflyPageTest"></class>
         </classes>
     </test>
 
