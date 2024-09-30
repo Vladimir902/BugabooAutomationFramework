@@ -12,8 +12,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
@@ -69,7 +67,7 @@ public class TestBase {
             FileHandler.copy(screenshotFile, destinationFile);
             System.out.println("Screenshot saved: " + destinationFile.getAbsolutePath());
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
     }
 
