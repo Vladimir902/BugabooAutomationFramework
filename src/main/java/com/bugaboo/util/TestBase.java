@@ -15,15 +15,18 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.Properties;
 
 public class TestBase {
 
     protected WebDriver driver;
     protected WebDriverWait wait; // To use in subclasses
+//    public Properties prop = new Properties();
 
 
     @Parameters({"browser", "headless"})
@@ -31,7 +34,7 @@ public class TestBase {
     public void setUp(String browser, boolean headless) {
         // Initialize WebDriver using DriverFactory, passing the headless option
         driver = DriverFactory.createDriver(browser, headless);
-        driver.manage().window().maximize(); // Optional: This may not have effect in headless mode
+        driver.manage().window().maximize();
         driver.get("https://www.bugaboo.com/us-en");  // Example URL, adjust based on your project
 
         // Initialize WebDriverWait with a timeout
@@ -41,6 +44,12 @@ public class TestBase {
         WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
         cookieDecline.click();
     }
+
+//
+//    File src = new File("src//data.properties");
+//    FileInputStream data = new FileInputStream(src);
+//        prop.load(data);
+//    String browserName = prop.getProperty("browser");
 
 
     public void takeScreenshot(String testName) {
@@ -67,7 +76,7 @@ public class TestBase {
             FileHandler.copy(screenshotFile, destinationFile);
             System.out.println("Screenshot saved: " + destinationFile.getAbsolutePath());
         } catch (IOException e) {
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 

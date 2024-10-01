@@ -1,15 +1,17 @@
 package com.bugaboo;
 
 import com.bugaboo.pages.HomePage;
-import com.bugaboo.util.DriverFactory;
 import com.bugaboo.util.TestBase;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
-public class HomeSteps extends TestBase {
+public class HomeTest extends TestBase {
 
-    HomePage homePage;
+    private HomePage homePage; // Make this private to ensure thread safety
 
     @BeforeMethod
     @Parameters({"browser", "headless"})
@@ -20,15 +22,17 @@ public class HomeSteps extends TestBase {
         homePage = new HomePage(driver);
     }
 
-
     @Test
+    @Description("Verifies that the search box is visible")
+    @Severity(SeverityLevel.CRITICAL)
     public void testSearchBox() {
         homePage.clickSearchBox();
         Assert.assertTrue(homePage.isSearchBoxVisible(), "Search box is not visible");
     }
 
-
     @Test
+    @Description("Inserts a value into the search box and checks correctness")
+    @Severity(SeverityLevel.NORMAL)
     public void insertValues() {
         // Click the search box
         homePage.clickSearchBox();
@@ -36,7 +40,7 @@ public class HomeSteps extends TestBase {
         // Enter a value into the search box
         String expectedValue = "Kangaroo";  // Set the expected value
 
-        //add the actual value
+        // Actual value
         String actualValue = "Kangaroo";
         homePage.enterValuesIntoSearchBox(actualValue);
 
@@ -44,15 +48,10 @@ public class HomeSteps extends TestBase {
         Assert.assertEquals(actualValue, expectedValue, "The value in the search box is incorrect.");
     }
 
-
     @AfterMethod
     public void tearDown(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            String testName = result.getName(); // Get the test name
-            takeScreenshot(testName); // Take a screenshot with the test name as the filename
-        }
-        DriverFactory.quitDriver();
+        // Implement any cleanup logic if necessary
+        super.tearDown(result);
     }
-
-
 }
+

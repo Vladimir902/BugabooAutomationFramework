@@ -1,15 +1,15 @@
 package com.bugaboo;
 
-import com.bugaboo.pages.ButterflyPage;
+import com.bugaboo.pages.WishlistPage;
 import com.bugaboo.util.TestBase;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class ButterflyPageTest extends TestBase {
+public class WishListTest extends TestBase {
 
-    ButterflyPage butterflyPage;
+    WishlistPage wishlistPage;
 
     @BeforeMethod
     @Parameters({"browser", "headless"})
@@ -17,12 +17,12 @@ public class ButterflyPageTest extends TestBase {
         // Call the setup method from TestBase, passing the browser and headless parameters
         super.setUp(browser, headless);
         // Initialize the HomePage object after the browser is set up
-        butterflyPage = new ButterflyPage(driver);
+        wishlistPage = new WishlistPage(driver);
     }
+
     @Test
-    public void TestCorrectURL() {
-
+    public void wishListTesting() {
+        wishlistPage.checkWishlist();
     }
-
 
 }

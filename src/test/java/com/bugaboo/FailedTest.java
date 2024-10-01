@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 
-public class FailedTestCase extends TestBase {
+public class FailedTest extends TestBase {
 
     FailedTestPage failedTestPage;
 
@@ -30,6 +30,5 @@ public class FailedTestCase extends TestBase {
         Assert.assertEquals(actualText, expectedText, "Text does not match!");
 
     }
-
 
 }

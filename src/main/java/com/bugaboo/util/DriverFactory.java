@@ -19,7 +19,6 @@ public class DriverFactory {
             ChromeOptions options = new ChromeOptions();
             if (headless) {
                 options.addArguments("--headless");
-                options.addArguments("--window-size=1920x1080"); // Set window size for headless mode
             }
             driver.set(new ChromeDriver(options));
         } else if (browser.equalsIgnoreCase("edge")) {
@@ -27,7 +26,6 @@ public class DriverFactory {
             EdgeOptions options = new EdgeOptions();
             if (headless) {
                 options.addArguments("--headless");
-                options.addArguments("--window-size=1920x1080"); // Set window size for headless mode
             }
             driver.set(new EdgeDriver(options));
         } else {

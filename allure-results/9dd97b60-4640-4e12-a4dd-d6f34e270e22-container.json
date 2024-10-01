@@ -1,0 +1,1 @@
+{"uuid":"9dd97b60-4640-4e12-a4dd-d6f34e270e22","name":"com.bugaboo.HomeTest.setUp","children":["17047d96-6bc5-4193-825b-edb6806d0e37"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1727796769766,"stop":1727796793232}],"afters":[],"start":1727796769766,"stop":1727796793232}

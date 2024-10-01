@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="All Test Suite" parallel="tests" thread-count="3"> <!-- Set parallel execution and thread count -->
+
+
+    <!-- Add Allure listener -->
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg" />
+    </listeners>
 
     <!-- Chrome Browser Tests -->
     <test name="Chrome Tests">
         <parameter name="browser" value="chrome" />
-        <parameter name="headless" value="true" /> <!-- Set to true for headless mode -->
+        <parameter name="headless" value="true" />
         <classes>
-            <class name="com.bugaboo.HomeSteps" />
-            <class name="com.bugaboo.ButterflyPageTest" />
+            <class name="com.bugaboo.HomeTest" />
+            <class name="com.bugaboo.WishListTest" />
         </classes>
     </test>
 
     <!-- Edge Browser Tests -->
     <test name="Edge Tests">
         <parameter name="browser" value="edge" />
-        <parameter name="headless" value="true" /> <!-- Set to true for headless mode -->
+        <parameter name="headless" value="false" /> <!-- Set to true for headless mode -->
         <classes>
-            <class name="com.bugaboo.HomeSteps" />
-            <class name="com.bugaboo.ButterflyPageTest" />
+            <class name="com.bugaboo.HomeTest" />
+            <class name="com.bugaboo.WishListTest" />
+        </classes>
+    </test>
+
+    <test name="FailedTestCase">
+        <classes>
+            <class name="com.bugaboo.FailedTest" />
         </classes>
     </test>
 
