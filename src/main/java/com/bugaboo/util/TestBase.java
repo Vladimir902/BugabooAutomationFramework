@@ -25,9 +25,7 @@ import java.util.Properties;
 public class TestBase {
 
     protected WebDriver driver;
-    protected WebDriverWait wait; // To use in subclasses
-//    public Properties prop = new Properties();
-
+    protected WebDriverWait wait;
 
     @Parameters({"browser", "headless"})
     @BeforeMethod
@@ -44,12 +42,6 @@ public class TestBase {
         WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
         cookieDecline.click();
     }
-
-//
-//    File src = new File("src//data.properties");
-//    FileInputStream data = new FileInputStream(src);
-//        prop.load(data);
-//    String browserName = prop.getProperty("browser");
 
 
     public void takeScreenshot(String testName) {
