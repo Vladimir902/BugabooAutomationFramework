@@ -3,13 +3,12 @@
 <suite name="All Test Suite" parallel="tests" thread-count="3"> <!-- Set parallel execution and thread count -->
 
 
-    <!-- Add Allure listener -->
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
     </listeners>
 
-    <!-- Chrome Browser Tests -->
-    <test name="Chrome Tests">
+    <!-- Smoke Tests -->
+    <test name="Smoke Tests - Chrome">
         <parameter name="browser" value="chrome" />
         <parameter name="headless" value="true" />
         <classes>
@@ -18,8 +17,7 @@
         </classes>
     </test>
 
-    <!-- Edge Browser Tests -->
-    <test name="Edge Tests">
+    <test name="Smoke Tests - Edge">
         <parameter name="browser" value="edge" />
         <parameter name="headless" value="false" /> <!-- Set to true for headless mode -->
         <classes>
@@ -28,7 +26,8 @@
         </classes>
     </test>
 
-    <test name="FailedTestCase">
+    <!-- Regression Tests -->
+    <test name="Regression Tests">
         <classes>
             <class name="com.bugaboo.FailedTest" />
         </classes>

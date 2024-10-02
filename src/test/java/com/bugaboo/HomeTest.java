@@ -2,12 +2,13 @@ package com.bugaboo;
 
 import com.bugaboo.pages.HomePage;
 import com.bugaboo.util.TestBase;
-import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
+
 
 public class HomeTest extends TestBase {
 
@@ -22,7 +23,7 @@ public class HomeTest extends TestBase {
         homePage = new HomePage(driver);
     }
 
-    @Test
+    @Test(priority = 1)
     @Description("Verifies that the search box is visible")
     @Severity(SeverityLevel.CRITICAL)
     public void testSearchBox() {
@@ -30,7 +31,7 @@ public class HomeTest extends TestBase {
         Assert.assertTrue(homePage.isSearchBoxVisible(), "Search box is not visible");
     }
 
-    @Test
+    @Test(priority = 2)
     @Description("Inserts a value into the search box and checks correctness")
     @Severity(SeverityLevel.NORMAL)
     public void insertValues() {

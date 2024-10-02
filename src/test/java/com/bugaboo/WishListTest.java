@@ -13,7 +13,7 @@ public class WishListTest extends TestBase {
 
     @BeforeMethod
     @Parameters({"browser", "headless"})
-    public void setUp(@Optional("chrome") String browser, @Optional("false") boolean headless) {
+    public void setUp(@Optional("chrome") String browser, @Optional("true") boolean headless) {
         // Call the setup method from TestBase, passing the browser and headless parameters
         super.setUp(browser, headless);
         // Initialize the HomePage object after the browser is set up
