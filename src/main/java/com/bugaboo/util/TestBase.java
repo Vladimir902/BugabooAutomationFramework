@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,15 +17,14 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import java.util.Properties;
 
 public class TestBase {
 
+    private static final Logger log = LoggerFactory.getLogger(TestBase.class);
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -68,7 +69,7 @@ public class TestBase {
             FileHandler.copy(screenshotFile, destinationFile);
             System.out.println("Screenshot saved: " + destinationFile.getAbsolutePath());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Screenshot was not saved");
         }
     }
 
