@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 
 public class FailedTest extends TestBase {
 
-    FailedTestPage failedTestPage;
+    private FailedTestPage failedTestPage;
 
     @BeforeMethod
     @Parameters({"browser", "headless"})

@@ -15,7 +15,6 @@ public class HomeTest extends TestBase {
     private HomePage homePage; // Make this private to ensure thread safety
 
     @BeforeMethod
-    @Parameters({"browser", "headless"})
     public void setUp(@Optional("edge") String browser, @Optional("false") boolean headless) {
         // Call the setup method from TestBase, passing the browser and headless parameters
         super.setUp(browser, headless);
