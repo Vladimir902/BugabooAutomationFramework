@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class WishListTest extends TestBase {
 
-    WishlistPage wishlistPage;
+    private WishlistPage wishlistPage;
 
     @BeforeMethod
     public void setUp() {
