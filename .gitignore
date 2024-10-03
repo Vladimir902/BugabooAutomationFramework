@@ -36,3 +36,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Ignore configuration files
+config_chrome.properties
+config_edge.properties
+config_headless.properties
