@@ -1,12 +1,11 @@
 package com.bugaboo;
 
-import com.bugaboo.pages.FailedTestPage;
 import com.bugaboo.pages.WishlistPage;
 import com.bugaboo.util.TestBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 
 public class WishListTest extends TestBase {
@@ -14,11 +13,13 @@ public class WishListTest extends TestBase {
     WishlistPage wishlistPage;
 
     @BeforeMethod
-    public void setUp(@Optional("chrome") String browser, @Optional("false") boolean headless) {
-        // Call the setup method from TestBase, passing the browser and headless parameters
-        super.setUp(browser, headless);
+    public void setUp() {
+        // Specify the path to the Chrome config file
+        setUpConfig("config_headless.properties");
+
         // Initialize the HomePage object after the browser is set up
         wishlistPage = new WishlistPage(driver);
+
     }
 
 
@@ -26,4 +27,13 @@ public class WishListTest extends TestBase {
     public void wishListTesting() {
         wishlistPage.checkWishlist();
     }
+
+
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        // Implement any cleanup logic if necessary
+        super.tearDown(result);
+    }
 }
+
+

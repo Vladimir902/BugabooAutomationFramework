@@ -27,21 +27,37 @@ public class TestBase {
     private static final Logger log = LoggerFactory.getLogger(TestBase.class);
     protected WebDriver driver;
     protected WebDriverWait wait;
+    private ConfigReader configReader;
 
-    @Parameters({"browser", "headless"})
-    @BeforeMethod
-    public void setUp(String browser, boolean headless) {
-        // Initialize WebDriver using DriverFactory, passing the headless option
+    // Add a parameter for config file path
+    protected void setUpConfig(String configFilePath) {
+        // Initialize ConfigReader with the specified config file
+        configReader = new ConfigReader(configFilePath);
+
+        // Get browser and headless values from the config file
+        String browser = configReader.getBrowser();
+        boolean headless = configReader.isHeadless();
+
+        // Initialize WebDriver using DriverFactory with browser and headless values
         driver = DriverFactory.createDriver(browser, headless);
         driver.manage().window().maximize();
-        driver.get("https://www.bugaboo.com/us-en");  // Example URL, adjust based on your project
+
+        // Navigate to the base URL from config file
+        driver.get(configReader.getBaseURL());
 
         // Initialize WebDriverWait with a timeout
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        // Handle cookie decline if it's visible
         WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
         cookieDecline.click();
+    }
+
+    /*@Parameters({"browser", "headless"})
+    @BeforeMethod
+    public void setUp(String browser, boolean headless) { */
+
+    @BeforeMethod
+    public void setUp() {
+        // Placeholder for actual setup implementation
     }
 
 

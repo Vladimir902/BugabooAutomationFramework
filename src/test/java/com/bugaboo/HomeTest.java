@@ -7,19 +7,27 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 
 public class HomeTest extends TestBase {
 
     private HomePage homePage; // Make this private to ensure thread safety
 
+   /* @Parameters({"browser", "headless"})
     @BeforeMethod
-    public void setUp(@Optional("edge") String browser, @Optional("false") boolean headless) {
-        // Call the setup method from TestBase, passing the browser and headless parameters
-        super.setUp(browser, headless);
+    public void setUp(@Optional("chrome") String browser, @Optional("false") boolean headless) { */
+
+    @BeforeMethod
+    public void setUp() {
+        // Specify the path to the Chrome config file
+        setUpConfig("config_chrome.properties");
+
         // Initialize the HomePage object after the browser is set up
         homePage = new HomePage(driver);
+
     }
 
     @Test(priority = 1)

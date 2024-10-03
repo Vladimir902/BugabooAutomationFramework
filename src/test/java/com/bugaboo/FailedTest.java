@@ -5,6 +5,7 @@ import com.bugaboo.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 
@@ -13,12 +14,13 @@ public class FailedTest extends TestBase {
     private FailedTestPage failedTestPage;
 
     @BeforeMethod
-    @Parameters({"browser", "headless"})
-    public void setUp(@Optional("chrome") String browser, @Optional("false") boolean headless) {
-        // Call the setup method from TestBase, passing the browser and headless parameters
-        super.setUp(browser, headless);
+    public void setUp() {
+        // Specify the path to the Chrome config file
+        setUpConfig("config_edge.properties");
+
         // Initialize the HomePage object after the browser is set up
         failedTestPage = new FailedTestPage(driver);
+
     }
 
     @Test
@@ -31,4 +33,9 @@ public class FailedTest extends TestBase {
 
     }
 
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        // Implement any cleanup logic if necessary
+        super.tearDown(result);
+    }
 }

@@ -13,7 +13,7 @@ public class WishlistPage {
 
 
     @FindBy(xpath = "//a[@aria-label='Bugaboo Fox 5']")
-    WebElement wishItem;
+    private WebElement wishItem;
 
 
     //Constructor
