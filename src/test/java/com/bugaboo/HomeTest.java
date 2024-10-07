@@ -5,11 +5,18 @@ import com.bugaboo.util.TestBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import com.bugaboo.util.CustomListener;
+
+import java.time.Duration;
 
 
 public class HomeTest extends TestBase {
@@ -34,6 +41,9 @@ public class HomeTest extends TestBase {
     @Description("Verifies that the search box is visible")
     @Severity(SeverityLevel.CRITICAL)
     public void testSearchBox() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
+        cookieDecline.click();
         homePage.clickSearchBox();
         Assert.assertTrue(homePage.isSearchBoxVisible(), "Search box is not visible");
     }
@@ -42,6 +52,10 @@ public class HomeTest extends TestBase {
     @Description("Inserts a value into the search box and checks correctness")
     @Severity(SeverityLevel.NORMAL)
     public void insertValues() {
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
+        cookieDecline.click();
         // Click the search box
         homePage.clickSearchBox();
 

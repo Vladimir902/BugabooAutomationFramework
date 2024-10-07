@@ -43,10 +43,6 @@ public class TestBase {
         // Navigate to the base URL from config file
         driver.get(configReader.getBaseURL());
 
-        // Initialize WebDriverWait with a timeout
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
-        cookieDecline.click();
     }
 
     /*@Parameters({"browser", "headless"})

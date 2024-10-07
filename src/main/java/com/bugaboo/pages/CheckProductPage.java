@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class FailedTestPage {
+public class CheckProductPage {
 
     WebDriver driver;
 
@@ -14,7 +14,7 @@ public class FailedTestPage {
     private WebElement locateImage;
 
     //Constructor
-    public FailedTestPage(WebDriver driver) {
+    public CheckProductPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
