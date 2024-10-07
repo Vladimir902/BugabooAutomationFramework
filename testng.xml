@@ -2,6 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="tests" thread-count="2"> <!-- Set parallel execution and thread count -->
 
+    <listeners>
+        <listener class-name="com.bugaboo.util.CustomListener"/>
+    </listeners>
 
     <test name="Smoke Tests - Chrome">
         <parameter name="configFile" value="config_chrome.properties"/>
@@ -13,7 +16,7 @@
     <test name="Smoke Tests - Edge">
         <parameter name="configFile" value="config_edge.properties"/> <!-- Updated to Edge config -->
         <classes>
-            <class name="com.bugaboo.FailedTest" /> <!-- Ensure FailedTest uses the Edge config -->
+            <class name="com.bugaboo.CheckProductTest" /> <!-- Ensure FailedTest uses the Edge config -->
         </classes>
     </test>
 
