@@ -1,3 +1,4 @@
+
 package com.bugaboo.util;
 
 import java.io.FileInputStream;
@@ -30,15 +31,5 @@ public class ConfigReader {
         return properties.getProperty("baseURL", "https://www.bugaboo.com/us-en"); // Default to Bugaboo URL
     }
 
-
-    public boolean disableNotifications() {
-        return Boolean.parseBoolean(properties.getProperty("disableNotifications", "true")); // Default to true
-    }
-
-    public int getImplicitWait() {
-        return Integer.parseInt(properties.getProperty("implicitWait", "10")); // Default to 10 seconds
-    }
-
-
-
 }
+
