@@ -35,15 +35,34 @@ public class TestBase {
         // Get browser and headless values from the config file
         String browser = configReader.getBrowser();
         boolean headless = configReader.isHeadless();
+        int implicitWait = configReader.getImplicitWait();
+        int explicitWait = configReader.getImplicitWait();
+        boolean disableNotifications = configReader.disableNotifications();
 
         // Initialize WebDriver using DriverFactory with browser and headless values
-        driver = DriverFactory.createDriver(browser, headless);
+        driver = DriverFactory.createDriver(browser, headless, disableNotifications);
         driver.manage().window().maximize();
+
+        // Set implicit wait from config file
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWait));
+
+        // Initialize WebDriverWait with explicit wait from config file
+        wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWait));
 
         // Navigate to the base URL from config file
         driver.get(configReader.getBaseURL());
 
+        log.info("Browser launched and navigated to: " + configReader.getBaseURL());
+
+        // Optionally handle browser-specific features like dismissing cookie notifications
+        try {
+            WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
+            cookieDecline.click();
+        } catch (Exception e) {
+            log.warn("Cookie consent dialog not found or could not be clicked");
+        }
     }
+
 
     /*@Parameters({"browser", "headless"})
     @BeforeMethod

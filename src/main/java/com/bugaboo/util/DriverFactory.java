@@ -13,7 +13,7 @@ public class DriverFactory {
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     // Method to initialize WebDriver based on the browser and headless option
-    public static WebDriver createDriver(String browser, boolean headless) {
+    public static WebDriver createDriver(String browser, boolean headless, boolean disableNotifications) {
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
