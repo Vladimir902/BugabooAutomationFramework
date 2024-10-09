@@ -39,8 +39,7 @@ build/
 
 # Ignore configuration files
 config_chrome.properties
-config_edge.properties
-config_headless.properties
+
 
 #Ignoring allure-results and screenshots folder for tracking
 /allure-results/

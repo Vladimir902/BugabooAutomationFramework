@@ -3,7 +3,7 @@
 <suite name="All Test Suite" parallel="tests" thread-count="2"> <!-- Set parallel execution and thread count -->
 
     <listeners>
-        <listener class-name="com.bugaboo.util.CustomListener"/>
+        <listener class-name="com.bugaboo.listeners.CustomListener"/>
     </listeners>
 
     <test name="Smoke Tests - Chrome">
