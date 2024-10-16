@@ -31,5 +31,10 @@ public class ConfigReader {
         return properties.getProperty("baseURL", "https://www.bugaboo.com/us-en"); // Default to Bugaboo URL
     }
 
+
+    public boolean isEnabledNotifications() {
+        return Boolean.parseBoolean(properties.getProperty("enabledNotifications", "false"));
+    }
+
 }
 

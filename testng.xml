@@ -14,7 +14,7 @@
     </test>
 
     <test name="Smoke Tests - Edge">
-        <parameter name="configFile" value="config_edge.properties"/> <!-- Updated to Edge config -->
+        <parameter name="configFile" value="config_chrome.properties"/> <!-- Updated to Edge config -->
         <classes>
             <class name="com.bugaboo.CheckProductTest" /> <!-- Ensure FailedTest uses the Edge config -->
         </classes>
@@ -22,7 +22,7 @@
 
     <!-- Headless Tests -->
     <test name="Regression Tests - Headless">
-        <parameter name="configFile" value="config_headless.properties"/> <!-- Headless config -->
+        <parameter name="configFile" value="config_chrome.properties"/> <!-- Headless config -->
         <classes>
             <class name="com.bugaboo.WishListTest" /> <!-- Ensure WishListTest uses the headless config -->
         </classes>

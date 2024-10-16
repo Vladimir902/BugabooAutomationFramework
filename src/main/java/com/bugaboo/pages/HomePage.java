@@ -15,6 +15,9 @@ public class HomePage {
 
     @FindBy(id = "navigation-search")
     private WebElement enterValue;
+
+    @FindBy(xpath = "(//div[@class='u-margin-top-32 u-button-group u-button-group--left']//a[@class='c-button--secondary button--icon button--transform'])[1]")
+    private WebElement shopBundles;
     
     //Constructor
     public HomePage(WebDriver driver) {
@@ -35,6 +38,10 @@ public class HomePage {
     public void enterValuesIntoSearchBox(String value) {
         enterValue.sendKeys(value);  // Enter the text
         enterValue.sendKeys(Keys.ENTER);  // Press Enter to submit the search
+    }
+
+    public void clickShopBundles() {
+        shopBundles.click();
     }
 
 

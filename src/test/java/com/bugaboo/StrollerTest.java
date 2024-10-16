@@ -1,6 +1,7 @@
 package com.bugaboo;
 
-import com.bugaboo.pages.CheckProductPage;
+import com.bugaboo.pages.StrollerPage;
+import com.bugaboo.pages.StrollerPage;
 import com.bugaboo.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,35 +12,41 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.bugaboo.listeners.RetryAnalyzer;
 
 import java.time.Duration;
 
 
-public class CheckProductTest extends TestBase {
+public class StrollerTest extends TestBase {
 
-    private CheckProductPage checkProductPage;
+    private StrollerPage strollerPage;
 
     @BeforeMethod
     public void setUp() {
+        // Specify the path to the Chrome config file
         super.setUp();
+
         // Initialize the HomePage object after the browser is set up
-        checkProductPage = new CheckProductPage(driver);
+        strollerPage = new StrollerPage(driver);
 
     }
 
-    @Test (retryAnalyzer = RetryAnalyzer.class)
-    public void checkProductName() {
+
+    @Test
+    public void wishListTesting() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
         cookieAccept.click();
-        checkProductPage.locatingImage();
-        WebElement element = driver.findElement(By.cssSelector("h2.u-hc"));
-        String actualText = element.getText();
-        String expectedText = "Bugaboo";
-        Assert.assertEquals(actualText, expectedText, "Text does not match!");
+
+        strollerPage.goToItem();
+        strollerPage.setNewColor();
+        WebElement colorImage = driver.findElement(By.xpath("//img[@alt='Desert Taupe sun canopy, Desert Taupe fabrics, black chassis']"));
+        Assert.assertTrue(colorImage.isDisplayed(), "The color image is not displayed.");
 
     }
+
+
+
+
 
     @AfterMethod
     public void tearDown(ITestResult result) {

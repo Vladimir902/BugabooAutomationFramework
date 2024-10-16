@@ -6,6 +6,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,7 +15,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.bugaboo.util.CustomListener;
 
 import java.time.Duration;
 
@@ -23,16 +23,10 @@ public class HomeTest extends TestBase {
 
     private HomePage homePage; // Make this private to ensure thread safety
 
-   /* @Parameters({"browser", "headless"})
-    @BeforeMethod
-    public void setUp(@Optional("chrome") String browser, @Optional("false") boolean headless) { */
 
     @BeforeMethod
     public void setUp() {
-        // Specify the path to the Chrome config file
-        setUpConfig("config_chrome.properties");
-
-        // Initialize the HomePage object after the browser is set up
+        super.setUp(); // Call the setup method in TestBase
         homePage = new HomePage(driver);
 
     }
@@ -42,8 +36,8 @@ public class HomeTest extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     public void testSearchBox() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
-        cookieDecline.click();
+        WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
+        cookieAccept.click();
         homePage.clickSearchBox();
         Assert.assertTrue(homePage.isSearchBoxVisible(), "Search box is not visible");
     }
@@ -54,8 +48,8 @@ public class HomeTest extends TestBase {
     public void insertValues() {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement cookieDecline = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyButtonDecline")));
-        cookieDecline.click();
+        WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
+        cookieAccept.click();
         // Click the search box
         homePage.clickSearchBox();
 
@@ -69,6 +63,28 @@ public class HomeTest extends TestBase {
         // Assert that the actual value matches the expected value
         Assert.assertEquals(actualValue, expectedValue, "The value in the search box is incorrect.");
     }
+
+    @Test(priority = 3)
+    public void testCorrectPrice() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
+        cookieAccept.click();
+        homePage.clickShopBundles();
+
+
+        WebElement priceElement = driver.findElement(By.xpath("//span[@content='$1,718.00']"));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", priceElement);
+
+        String priceText = priceElement.getText().replace("$", "").replace(",", "").trim();
+        double actualPrice = Double.parseDouble(priceText);
+        double expectedPrice = 1718.00;
+        Assert.assertEquals(actualPrice, expectedPrice, "The price does not match the expected value.");
+
+
+    }
+
 
     @AfterMethod
     public void tearDown(ITestResult result) {
