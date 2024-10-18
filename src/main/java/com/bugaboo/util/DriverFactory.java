@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 public class DriverFactory {
 
     // ThreadLocal to manage WebDriver instances for parallel execution
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver createDriver(String browser, boolean headless, boolean enabledNotifications) {
         if (browser.equalsIgnoreCase("chrome")) {
@@ -61,10 +61,7 @@ public class DriverFactory {
         return driver.get();
     }
 
-    // Method to get the current WebDriver instance
-    public static WebDriver getDriver() {
-        return driver.get();
-    }
+
 
     // Method to close and clean up the WebDriver instance
     public static void quitDriver() {

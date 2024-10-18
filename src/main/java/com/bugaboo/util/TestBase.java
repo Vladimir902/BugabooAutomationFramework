@@ -1,10 +1,8 @@
 package com.bugaboo.util;
 
 import com.bugaboo.listeners.CustomListener;
-import org.openqa.selenium.By;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +25,11 @@ public class TestBase {
     private static final Logger log = LoggerFactory.getLogger(TestBase.class);
     protected WebDriver driver;
     protected WebDriverWait wait;
-    private ConfigReader configReader;
 
     // Add a parameter for config file path
     protected void setUpConfig(String configFilePath) {
         // Initialize ConfigReader with the specified config file
-        configReader = new ConfigReader(configFilePath);
+        ConfigReader configReader = new ConfigReader(configFilePath);
 
         // Get browser and headless values from the config file
         String browser = configReader.getBrowser();
@@ -70,8 +67,12 @@ public class TestBase {
 
         // Ensure the screenshots directory exists, create it if necessary
         if (!screenshotDir.exists()) {
-            screenshotDir.mkdirs(); // Create directories if they do not exist
+            boolean wasSuccessful = screenshotDir.mkdirs(); // Create directories if they do not exist
+            if (!wasSuccessful) {
+                System.out.println("was not successful.");
+            }
         }
+
 
         // Define the full path for the screenshot
         File destinationFile = new File(screenshotDir, fileName);

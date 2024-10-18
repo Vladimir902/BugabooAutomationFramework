@@ -4,5 +4,32 @@
     <inspection_tool class="ExtractMethodRecommender" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="maxParameters" value="1" />
     </inspection_tool>
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="TestingFramework" />
+          <option value="TestingFramework" />
+          <option value="TestingFramework" />
+          <option value="TestingFramework" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="com.fasterxml.jackson.core:jackson-databind:2.10.3" />
+          <option value="com.google.guava:guava:25.0-jre" />
+          <option value="com.squareup.okhttp3:okhttp:3.11.0" />
+          <option value="com.squareup.okio:okio:1.14.0" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

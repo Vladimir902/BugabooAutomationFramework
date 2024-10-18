@@ -1,12 +1,17 @@
 
 package com.bugaboo.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
-    private Properties properties;
+    private final Properties properties;
+    private static final Logger logger = LoggerFactory.getLogger(ConfigReader.class);
+
 
     // Constructor that takes a config file path
     public ConfigReader(String configFilePath) {
@@ -14,7 +19,7 @@ public class ConfigReader {
         try (FileInputStream input = new FileInputStream(configFilePath)) {
             properties.load(input);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("An error occurred");
         }
     }
 
@@ -35,6 +40,15 @@ public class ConfigReader {
     public boolean isEnabledNotifications() {
         return Boolean.parseBoolean(properties.getProperty("enabledNotifications", "false"));
     }
+
+    public String getUsername() {
+        return properties.getProperty("username", "default_username"); // Default username if not specified
+    }
+
+    public String getPassword() {
+        return properties.getProperty("password", "default_password"); // Default password if not specified
+    }
+
 
 }
 

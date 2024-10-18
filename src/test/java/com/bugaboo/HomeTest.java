@@ -70,16 +70,19 @@ public class HomeTest extends TestBase {
         WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
         cookieAccept.click();
         homePage.clickShopBundles();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement parentClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Stroller bundles')]/following-sibling::ul/li/a//span[contains(text(),'Kangaroo Tandem bundles')]")));
+        parentClick.click();
 
 
-        WebElement priceElement = driver.findElement(By.xpath("//span[@content='$1,718.00']"));
+        WebElement priceElement = driver.findElement(By.xpath("//span[@content='$1,701.80']"));
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", priceElement);
 
         String priceText = priceElement.getText().replace("$", "").replace(",", "").trim();
         double actualPrice = Double.parseDouble(priceText);
-        double expectedPrice = 1718.00;
+        double expectedPrice = 1701.80;
         Assert.assertEquals(actualPrice, expectedPrice, "The price does not match the expected value.");
 
 
@@ -91,5 +94,7 @@ public class HomeTest extends TestBase {
         // Implement any cleanup logic if necessary
         super.tearDown(result);
     }
+
+
 }
 

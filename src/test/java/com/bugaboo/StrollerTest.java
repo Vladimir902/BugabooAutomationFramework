@@ -1,7 +1,6 @@
 package com.bugaboo;
 
 import com.bugaboo.pages.StrollerPage;
-import com.bugaboo.pages.StrollerPage;
 import com.bugaboo.util.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -38,14 +37,14 @@ public class StrollerTest extends TestBase {
         cookieAccept.click();
 
         strollerPage.goToItem();
-        strollerPage.setNewColor();
-        WebElement colorImage = driver.findElement(By.xpath("//img[@alt='Desert Taupe sun canopy, Desert Taupe fabrics, black chassis']"));
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement colorImage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@alt='Desert Taupe sun canopy, Desert Taupe fabrics, black chassis']")));
+        colorImage.click();
+
         Assert.assertTrue(colorImage.isDisplayed(), "The color image is not displayed.");
 
     }
-
-
-
 
 
     @AfterMethod

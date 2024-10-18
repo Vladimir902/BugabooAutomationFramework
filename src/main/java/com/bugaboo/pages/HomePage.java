@@ -1,10 +1,12 @@
 package com.bugaboo.pages;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class HomePage {
 
@@ -16,8 +18,8 @@ public class HomePage {
     @FindBy(id = "navigation-search")
     private WebElement enterValue;
 
-    @FindBy(xpath = "(//div[@class='u-margin-top-32 u-button-group u-button-group--left']//a[@class='c-button--secondary button--icon button--transform'])[1]")
-    private WebElement shopBundles;
+    @FindBy(id = "dynamicbundles")
+    private WebElement bundlesClick;
     
     //Constructor
     public HomePage(WebDriver driver) {
@@ -28,7 +30,6 @@ public class HomePage {
     public void clickSearchBox() {
         searchBox.click();
     }
-
 
     public boolean isSearchBoxVisible() {
         return searchBox.isDisplayed();
@@ -41,8 +42,9 @@ public class HomePage {
     }
 
     public void clickShopBundles() {
-        shopBundles.click();
+        bundlesClick.click();
     }
+
 
 
 }
