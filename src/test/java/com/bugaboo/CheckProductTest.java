@@ -37,7 +37,7 @@ public class CheckProductTest extends TestBase {
         WebElement element = driver.findElement(By.cssSelector("h2.u-hc"));
         String actualText = element.getText();
         String expectedText = "Bugaboo";
-        Assert.assertEquals(actualText, expectedText, "Text does not match!");
+        Assert.assertEquals(actualText, expectedText, "Text do not match!");
 
     }
 
