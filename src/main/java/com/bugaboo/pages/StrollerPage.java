@@ -17,10 +17,6 @@ public class StrollerPage {
     @FindBy(xpath = "//a[@aria-label='Bugaboo Fox 5']")
     private WebElement addItem;
 
-    @FindBy(xpath = "//img[@alt='Desert Taupe sun canopy, Desert Taupe fabrics, black chassis']")
-    private WebElement changeColor;
-
-
 
     //Constructor
     public StrollerPage(WebDriver driver) {
