@@ -24,5 +24,5 @@ jobs:
         run: mvn clean install
 
       - name: Run tests
-        run: mvn test -Dtestng.xml=src/test/resources/testng.xml || true
+        run: mvn test -Dtestng.xml=src/testng.xml || true
 
