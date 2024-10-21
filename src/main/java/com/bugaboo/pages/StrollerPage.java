@@ -48,13 +48,5 @@ public class StrollerPage {
 
 
 
-    public void setNewColor() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // wait up to 10 seconds
-        wait.until(ExpectedConditions.visibilityOf(changeColor)); // wait for visibility
-        changeColor.click(); // perform the click action once visible
-    }
-
-
-
 }
 

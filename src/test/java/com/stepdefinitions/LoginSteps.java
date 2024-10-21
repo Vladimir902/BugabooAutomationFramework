@@ -1,6 +1,7 @@
 package com.stepdefinitions;
 
 import com.bugaboo.pages.LoginPage;
+import com.bugaboo.util.TestBase;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +18,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class LoginSteps {
+public class LoginSteps extends TestBase {
 
     private WebDriver driver;
     private LoginPage loginPage;

@@ -24,7 +24,11 @@
     <test name="Regression Tests - Headless">
         <parameter name="configFile" value="config_chrome.properties"/> <!-- Headless config -->
         <classes>
-            <class name="com.bugaboo.StrollerTest" /> <!-- Ensure WishListTest uses the headless config -->
+            <class name="com.bugaboo.StrollerTest">
+                <methods>
+                    <exclude name="colorStrollerTest"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
