@@ -34,7 +34,6 @@ public class DriverFactory {
                 options.addArguments("--headless");
             }
             if (enabledNotifications) {
-                // Edge supports notifications through Chrome options
                 options.addArguments("--enable-notifications");
             } else {
                 options.addArguments("--disable-notifications");
@@ -62,8 +61,6 @@ public class DriverFactory {
     }
 
 
-
-    // Method to close and clean up the WebDriver instance
     public static void quitDriver() {
         if (driver.get() != null) {
             driver.get().quit();

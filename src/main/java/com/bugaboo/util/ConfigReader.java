@@ -24,16 +24,16 @@ public class ConfigReader {
     }
 
     public String getBrowser() {
-        return properties.getProperty("browser", "chrome"); // Default to chrome if not specified
+        return properties.getProperty("browser", "chrome");
     }
 
     public boolean isHeadless() {
-        return Boolean.parseBoolean(properties.getProperty("headless", "false")); // Default to false
+        return Boolean.parseBoolean(properties.getProperty("headless", "false"));
     }
 
 
     public String getBaseURL() {
-        return properties.getProperty("baseURL", "https://www.bugaboo.com/us-en"); // Default to Bugaboo URL
+        return properties.getProperty("baseURL", "https://www.bugaboo.com/us-en");
     }
 
 
@@ -42,11 +42,11 @@ public class ConfigReader {
     }
 
     public String getUsername() {
-        return properties.getProperty("username", "default_username"); // Default username if not specified
+        return properties.getProperty("username", "default_username");
     }
 
     public String getPassword() {
-        return properties.getProperty("password", "default_password"); // Default password if not specified
+        return properties.getProperty("password", "default_password");
     }
 
 

@@ -23,19 +23,19 @@ public class CheckProductTest extends TestBase {
     @BeforeMethod
     public void setUp() {
         super.setUp();
-        // Initialize the HomePage object after the browser is set up
         checkProductPage = new CheckProductPage(driver);
-
     }
 
     @Test (retryAnalyzer = RetryAnalyzer.class)
     public void checkProductName() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
-        cookieAccept.click();
+        cookieAccept.click(); //Accept the cookies from dialog box
+
         checkProductPage.locatingImage();
         WebElement element = driver.findElement(By.cssSelector("h2.u-hc"));
-        String actualText = element.getText();
+        String actualText = element.getText(); //Locate the image, click on it and get text
+
         String expectedText = "Bugaboo";
         Assert.assertEquals(actualText, expectedText, "Texts do not match!");
 
@@ -43,7 +43,6 @@ public class CheckProductTest extends TestBase {
 
     @AfterMethod
     public void tearDown(ITestResult result) {
-        // Implement any cleanup logic if necessary
         super.tearDown(result);
     }
 }

@@ -86,7 +86,7 @@ public class TestBase {
         }
     }
 
-        // Optional: Tear down method to quit the driver after each test
+        // Tear down method to quit the driver after each test
         @AfterMethod
         public void tearDown (ITestResult result){
             String testName = result.getName(); // Get the test name

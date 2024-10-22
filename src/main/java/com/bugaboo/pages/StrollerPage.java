@@ -18,7 +18,6 @@ public class StrollerPage {
     private WebElement addItem;
 
 
-
     //Constructor
     public StrollerPage(WebDriver driver) {
         this.driver = driver;

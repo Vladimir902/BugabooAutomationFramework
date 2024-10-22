@@ -6,23 +6,23 @@
         <listener class-name="com.bugaboo.listeners.CustomListener"/>
     </listeners>
 
-    <test name="Smoke Tests - Chrome">
+    <test name="Smoke Tests">
         <parameter name="configFile" value="config_chrome.properties"/>
         <classes>
             <class name="com.bugaboo.HomeTest" />
         </classes>
     </test>
 
-    <test name="Smoke Tests - Edge">
-        <parameter name="configFile" value="config_chrome.properties"/> <!-- Updated to Edge config -->
+    <test name="Smoke Tests">
+        <parameter name="configFile" value="config_chrome.properties"/>
         <classes>
-            <class name="com.bugaboo.CheckProductTest" /> <!-- Ensure FailedTest uses the Edge config -->
+            <class name="com.bugaboo.CheckProductTest" />
         </classes>
     </test>
 
     <!-- Headless Tests -->
-    <test name="Regression Tests - Headless">
-        <parameter name="configFile" value="config_chrome.properties"/> <!-- Headless config -->
+    <test name="Regression Tests">
+        <parameter name="configFile" value="config_chrome.properties"/>
         <classes>
             <class name="com.bugaboo.StrollerTest">
                 <methods>

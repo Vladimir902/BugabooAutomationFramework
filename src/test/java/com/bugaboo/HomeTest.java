@@ -21,12 +21,12 @@ import java.time.Duration;
 
 public class HomeTest extends TestBase {
 
-    private HomePage homePage; // Make this private to ensure thread safety
+    private HomePage homePage;
 
 
     @BeforeMethod
     public void setUp() {
-        super.setUp(); // Call the setup method in TestBase
+        super.setUp();
         homePage = new HomePage(driver);
 
     }
@@ -68,20 +68,23 @@ public class HomeTest extends TestBase {
     @Description("Check if the price is correct")
     @Severity(SeverityLevel.CRITICAL)
     public void testCorrectPrice() {
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
-        cookieAccept.click();
+        cookieAccept.click(); //Accept the cookies from dialog box
+
         homePage.clickShopBundles();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement parentClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Stroller bundles')]/following-sibling::ul/li/a//span[contains(text(),'Kangaroo Tandem bundles')]")));
-        parentClick.click();
+        parentClick.click(); //click on shop bundles of the home page
 
-
+        //find the price for the element
         WebElement priceElement = driver.findElement(By.xpath("//span[@content='$1,701.80']"));
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", priceElement);
 
+        //Test if the price is correct
         String priceText = priceElement.getText().replace("$", "").replace(",", "").trim();
         double actualPrice = Double.parseDouble(priceText);
         double expectedPrice = 1701.80;

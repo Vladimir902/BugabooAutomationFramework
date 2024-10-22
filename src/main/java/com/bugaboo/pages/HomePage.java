@@ -31,10 +31,9 @@ public class HomePage {
         return searchBox.isDisplayed();
     }
 
-    // Method to enter values into the search box dynamically
     public void enterValuesIntoSearchBox(String value) {
-        enterValue.sendKeys(value);  // Enter the text
-        enterValue.sendKeys(Keys.ENTER);  // Press Enter to submit the search
+        enterValue.sendKeys(value);
+        enterValue.sendKeys(Keys.ENTER);
     }
 
     public void clickShopBundles() {

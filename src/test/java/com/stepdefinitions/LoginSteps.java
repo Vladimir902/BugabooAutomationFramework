@@ -33,7 +33,7 @@ public class LoginSteps extends TestBase {
         loginPage = new LoginPage(driver); // Initialize the LoginPage class
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
-        cookieAccept.click();
+        cookieAccept.click(); ////Accept the cookies from dialog box
     }
 
 
@@ -47,7 +47,7 @@ public class LoginSteps extends TestBase {
     public void userEntersTheCredentials() {
         WebElement element = driver.findElement(By.id("loginEmail"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        loginPage.addUsername(); // Pass the username to the LoginPage method
+        loginPage.addUsername();
         loginPage.addPassword();
     }
 
@@ -62,13 +62,10 @@ public class LoginSteps extends TestBase {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe("https://www.bugaboo.com/us-en/accounts/?registration=false"));
 
-        // Get the current URL
         String currentURL = driver.getCurrentUrl();
 
-        // Expected URL
         String expectedURL = "https://www.bugaboo.com/us-en/accounts/?registration=false";
 
-        // Assert that the current URL matches the expected URL
         Assert.assertEquals(currentURL, expectedURL, "The user was not redirected to the expected accounts page!");
     }
 }
