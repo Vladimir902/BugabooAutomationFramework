@@ -4,6 +4,7 @@ import com.bugaboo.pages.StrollerPage;
 import com.bugaboo.util.TestBase;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 
 
 public class StrollerTest extends TestBase {
@@ -76,8 +78,39 @@ public class StrollerTest extends TestBase {
         }
     }
 
+    @Test
+    public void testText() {
 
+        try {
+            // Check if the cookie dialog box is present and clickable, then accept it
+            WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
+            if (cookieAccept.isDisplayed()) {
+                cookieAccept.click();
+            }
+        } catch (TimeoutException | NoSuchElementException e) {
+            // Handle case where the cookie dialog does not appear
+            System.out.println("Cookie dialog did not appear, continuing with test.");
+        }
 
+        // Navigate to the stroller item
+        strollerPage.goToItem();
+
+        // Wait for the text to be present in the element
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("//div[@class='pdp-header__intro pdp-header__grid-item pdp-header__intro--desktop']//h1[@class='pdp-header__title']")
+        ));
+
+        WebElement titleElement = driver.findElement(By.xpath("//div[@class='pdp-header__intro pdp-header__grid-item pdp-header__intro--desktop']//h1[@class='pdp-header__title']"));
+
+        String expectedTitle = "Bugaboo Fox 5 bassinet and seat stroller";
+
+        //Trim the empty spaces for better assertion
+        String actualTitle = strollerPage.getProductTitle(titleElement).trim();
+
+        Assert.assertEquals(actualTitle, expectedTitle, "The product title is not as expected.");
+
+    }
 
 
     @AfterMethod

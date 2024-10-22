@@ -18,6 +18,7 @@ public class StrollerPage {
     private WebElement addItem;
 
 
+
     //Constructor
     public StrollerPage(WebDriver driver) {
         this.driver = driver;
@@ -40,6 +41,11 @@ public class StrollerPage {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", visibleWishItem);
         }
     }
+
+    public String getProductTitle(WebElement titleElement) {
+        return titleElement.getText();
+    }
+
 
 
 
