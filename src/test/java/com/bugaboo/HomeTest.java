@@ -65,6 +65,8 @@ public class HomeTest extends TestBase {
     }
 
     @Test(priority = 3)
+    @Description("Check if the price is correct")
+    @Severity(SeverityLevel.CRITICAL)
     public void testCorrectPrice() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement cookieAccept = wait.until(ExpectedConditions.elementToBeClickable(By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")));
