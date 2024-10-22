@@ -6,7 +6,7 @@
         <listener class-name="com.bugaboo.listeners.CustomListener"/>
     </listeners>
 
-    <test name="Smoke Tests">
+    <test name="Business Critical Tests">
         <parameter name="configFile" value="config_chrome.properties"/>
         <classes>
             <class name="com.bugaboo.HomeTest" />
