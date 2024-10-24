@@ -20,7 +20,6 @@
         </classes>
     </test>
 
-    <!-- Headless Tests -->
     <test name="Regression Tests">
         <parameter name="configFile" value="config_chrome.properties"/>
         <classes>

@@ -42,8 +42,8 @@ public class LoginPage {
 
     public void addPassword() {
         ConfigReader configReader = new ConfigReader("config_chrome.properties");
-        String password = configReader.getPassword();
-        passwordInput.sendKeys(password);
+        String password = configReader.getPassword(); // Fetching password from config.properties
+        passwordInput.sendKeys(password); // Sending the fetched password to the input field
     }
 
     public void clickLogin() {

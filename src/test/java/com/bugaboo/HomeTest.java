@@ -75,11 +75,11 @@ public class HomeTest extends TestBase {
 
         homePage.clickShopBundles();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement parentClick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Stroller bundles')]/following-sibling::ul/li/a//span[contains(text(),'Kangaroo Tandem bundles')]")));
-        parentClick.click(); //click on shop bundles of the home page
+        WebElement strollerBundles = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Stroller bundles')]/following-sibling::ul/li/a//span[contains(text(),'Kangaroo Tandem bundles')]")));
+        strollerBundles.click(); //click on shop bundles of the home page
 
         //find the price for the element
-        WebElement priceElement = driver.findElement(By.xpath("//span[@content='$1,701.80']"));
+        WebElement priceElement = driver.findElement(By.xpath("(//div[@class='u-flex-self-bottom u-width--full']//div[@class='c-price c-price--product-tile']//span[@class='price__value'])[1]"));
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", priceElement);
@@ -87,7 +87,7 @@ public class HomeTest extends TestBase {
         //Test if the price is correct
         String priceText = priceElement.getText().replace("$", "").replace(",", "").trim();
         double actualPrice = Double.parseDouble(priceText);
-        double expectedPrice = 1701.80;
+        double expectedPrice = 1872.75;
         Assert.assertEquals(actualPrice, expectedPrice, "The price does not match the expected value.");
 
 

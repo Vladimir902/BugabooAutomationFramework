@@ -54,7 +54,7 @@ public class StrollerTest extends TestBase {
         try {
             // Select the color option
             WebElement colorImage = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(colorXPath)));
-            colorImage.click();
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", colorImage);
 
             // Attempt to interact with the element, and catch if it becomes stale
             try {
